@@ -1,0 +1,7 @@
+#!/bin/bash
+
+rm math.out
+/Applications/Mathematica.app/Contents/MacOS/MathKernel -run '<<EOF
+Lattice_Integrate.m' >> math.out
+cat math.out | sed '1d' | sed '1d'
+EOF

@@ -1,0 +1,133 @@
+off statistics;
+format mathematica;
+
+
+Autodeclare Index a,b,c,d;       *// color inidices
+Autodeclare Index i,j;           *// indices on T-functions
+Autodeclare Index ix,mu;         *// Lorentz indices
+Autodeclare Index dum;           *// dummy sum indices
+
+Autodeclare Vector k,p,q;        *// four-momenta
+CF Subscript,T,Sin,Cos,SUM;      *// shorthands for mathematica
+CF A,B,AD,BD;                    *// shorthands for Vertices
+CF t1,t2,t3,t4;                  *// shorthand for trig functions of dummy momenta
+CF del,d;                        *// delta functions
+F G, SIG;                        *// non-commuting symbols
+Symbol sf,pow,rw,rh,a,FZERO;     *// lattice parameters
+
+
+
+
+* ======== EXPRESSION TO COMPUTE ======================
+L FirstOrderFeynmanRule = -rh/a*4*i_*
+  			FZERO * T(0,1,0,p1,p2,mu);
+
+
+
+
+*===================================================
+*  TRACE REPLACEMENTS
+*===================================================
+
+* set for the 1st order Feynman Rule.
+* we assume that p is the external momenta for G_{mu,nu}
+* and that k is the dummy integration momenta (to be factored out).
+*-----------------------------------------------------------------------------------------------------------------------
+
+id T(0,1,0,p1?,p2?,mu?) = 1/(4*i_)*SIG(1,alpha,beta)
+                                         *( A(0,k+p,dum11)   * g_(1,dum1)  + B(0,k+p,dum11) )
+                                         *( AD(1,k+p/2,mu1)  * g_(1,mu)    + BD(1,k+p/2,mu1) )
+	                                 *( A(0,k,dum22)     * g_(1,dum2)  + B(0,k,dum22) );
+
+
+
+* == DEFINITION OF SIGMA ==
+id SIG(1,mu1?,mu2?) = -i_/2 * ( g_(1,mu1,mu2) - g_(1,mu2,mu1) );
+
+
+
+* == COMPUTE THE TRACE == 
+trace4,1;
+id d_(mu1?,mu2?) = d(mu1,mu2);
+
+*----------------------------------------------
+* == REPLACE ALL A/B FACTORS ===
+* =============================
+* cos(k)   --> t1
+* sin(k)   --> t2
+* cos(k/2) --> t3
+* sin(k/2) --> t4
+*==============================
+*----------------------------------------------
+
+id A(0,k,mu?)      =  i_/a  * SUM(mu) * t2(mu);
+id B(0,k,mu?)      = 2*rw/a * SUM(mu) * t4(mu)^2 - rh/a;
+
+id A(0,k+p,mu?)    =   i_/a * SUM(mu) * ( Sin(a*p(mu))   * t1(mu) + Cos(a * p(mu) ) * t2(mu));
+id B(0,k+p,mu?)    = 2*rw/a * SUM(mu) * ( Sin(a*p(mu)/2) * t3(mu) + Cos(a*p(mu)/2)  * t4(mu))^2 - rh/a;
+
+
+id A(1,k+p/2,mu?)    = i_  * ( Cos(a*p(mu)/2)*t1(mu) - Sin(a*p(mu)/2)*t2(mu)  );
+id B(1,k+p/2,mu?)    = rw  * ( Sin(a*p(mu)/2) * t1(mu) + Cos(a*p(mu)/2) * t2(mu) );
+id AD(1,k+p/2,mu?)   = -i_  * ( Cos(a*p(mu)/2)*t1(mu) - Sin(a*p(mu)/2)*t2(mu)  );
+id BD(1,k+p/2,mu?)   = rw   * ( Sin(a*p(mu)/2) * t1(mu) + Cos(a*p(mu)/2) * t2(mu) );
+
+
+*----------------------------------------------
+* == FZERO is an even function, so set odd powers of t's to zero ==
+repeat;
+  id t1(dum?)           = t3(dum)^2-t4(dum)^2;
+  id t3(dum?) * t4(dum) = 1/2*t2(dum);
+  id t3(dum?)^2         = 1 - t4(dum)^2;
+endrepeat;
+
+
+*# scale B factors to be sure only even multiples of them remain
+id t1(dum1?) = sf^2 * t1(dum1);
+id t2(dum1?) = sf * t2(dum1) ;
+id t3(dum1?) = sf^2 * t3(dum1);
+id t4(dum1?) = sf * t4(dum1);
+
+id sf^pow?!even_ = 0 ;
+id sf = 1 ;
+
+
+* // apply symmetry tables to the integrations over k
+************************************************
+id t2(dum1?)*t2(dum2?)*t2(dum3?)*t2(dum4?) = B(dum1,dum2,dum3,dum4);
+id t2(dum1?)*t2(dum2?) = B(dum1,dum2);
+
+
+*# order 4 reps - TESTED against FORTRAN integrations and all tries check perfectly, 
+*id B(dum1?,dum2?,dum3?,dum4?) = t2(dum1)*t2(dum2)*t2(dum3)*t2(dum4)*(d(dum1,dum3)*d(dum2,dum4)+d(dum1,dum4)*d(dum2,dum3)+d(dum1,dum2)*d(dum3,dum4)-2*d(dum1,dum2)*d(dum1,dum3)*d(dum1,dum4));
+
+*# order 2 reps
+id B(dum1?,dum2?) = t2(dum1)*t2(dum2)*d(dum1,dum2);
+
+*#------------------------------------------------------------------------------------------------------
+*#  end symmetry tables
+*#------------------------------------------------------------------------------------------------------
+*# scale B factors to be sure only even multiples of them remain
+id t2(dum1?) = sf * t2(dum1) ;
+id sf^pow?!even_ = 0 ;
+id sf = 1 ;
+
+
+* // since we dont' actually care about t3,t2,t4 we can set them to unity
+*id t1(dum?) = 1;
+*id t3(dum?) = 1;
+*id t2(dum?) = 1;
+*id t4(dum?) = 1;
+id FZERO    = 1;
+
+*----------------------------------------------
+id sf^pow?!even_ = 0;
+id sf = 1;
+id t2(dum?)^2         = 4 * t4(dum)^2 - 4*t4(dum)^4;	
+
+*----------------------------------------------
+
+
+.sort
+print;
+.end

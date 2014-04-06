@@ -1,0 +1,3 @@
+#!/bin/bash
+
+python ~/physics/research/perturbativeLattice/analyticRoutines/taylor/taylor_expand.py ~/physics/research/perturbativeLattice/analyticRoutines/taylor/taylor.txt

@@ -1,0 +1,125 @@
+off statistics;
+format mathematica;
+
+* == PURPOSE ==
+
+* == INCLUDES ==
+
+
+*===SPECIAL FUNCTIONS===
+CF b, B;                   *// the bosonic integral to be reduced
+CF V, Gamma, Log, F, G;
+
+*===SPECIAL SYMBOLS=====
+S nb, nx,ny,nz,nt;
+S d, DIM, delta;           *// delta is a IR regulator, taken to zero at the end.
+S Z0, Z1, Z2, PI;          *// the integration constants
+
+***THE INTEGRAND FROM PYTHON***
+L expr = B(0,4,0,0,0,2);
+
+
+
+
+* =========================================================
+* // the first set of boson reduction formulae 
+
+*// ==============================================================
+*// begin main replacements here.
+*// see NPB 375,195 for a description/derivation of these reduction
+*// results
+ 
+repeat;
+
+ 
+* // nicer results are obtained by shifting everything to the left
+* // this is an invariant operation under the hypercubic group.
+  id B(0,nb?,0,0,0,nt?)     = B(0,nb,nt,0,0,0);
+  id B(0,nb?,0,0,nt?,0)     = B(0,nb,nt,0,0,0);
+  id B(0,nb?,0,nt?,0,0)     = B(0,nb,nt,0,0,0);
+
+  id B(0,nb?,0,0,nz?,nt?)   = B(0,nb,nz,nt,0,0);
+  id B(0,nb?,0,nz?,0,nt?)   = B(0,nb,nz,nt,0,0);
+  id B(0,nb?,0,nz?,nt?,0)   = B(0,nb,nz,nt,0,0);
+
+  id B(0,nb?,0,ny?,nz?,nt?) = B(0,nb,ny,nz,nt,0);
+
+
+
+
+  id B(0,nb?, 1  , 0, 0, 0)   =  1/d     *   B(0,nb-1, 0, 0, 0, 0);
+  id B(0,nb?, nx?, 1, 0, 0)   =  1/(d-1) * ( B(0,nb-1, nx,0,0,0)  - B(0,nb, nx + 1, 0, 0, 0) );
+  id B(0,nb?, nx?, ny?,1,0)   =  1/(d-2) * ( B(0,nb-1,nx,ny,0,0)  - B(0,nb,nx+1,ny,0,0)  - B(0,nb,nx,ny+1,0,0));   
+  id B(0,nb?, nx?,ny?,nz?,1)  =  1/(d-3) * ( B(0,nb-1,nx,ny,nz,0) - B(0,nb,nx+1,ny,nz,0) - B(0,nb,nx,ny+1,nz,0) - B(0,nb,nx,ny,nz+1,0));
+
+
+
+* // 2nd set of replacements here, these are conditional
+  id B(0,nb?, nx?{>1}, 0, 0, 0) = (nx-1)/(nb + delta - 1)    * B(0,nb-1, nx-1, 0,0,0) 
+                                   - (4*nx -6)/(nb + delta - 1) * B(0,nb-1,nx-2,0,0,0) + 4 * B(0,nb,nx-1,0,0,0);  
+
+  id B(0,nb?,nx?,ny?{>1},0,0)   = (ny-1)/(nb + delta - 1) * B(0, nb-1, nx, ny-1,0,0) - (4*ny-6)/(nb + delta -1) * B(0, nb - 1, nx ,ny -2 ,0,0)
+                                   + 4 * B(0,nb,nx,ny-1,0,0);  
+
+  id B(0,nb?,nx?,ny?,nz?{>1},0) = (nz-1)/(nb+delta-1) * B(0,nb-1,nx,ny,nz-1,0) - (4*nz-6)/(nb+delta - 1) * B(0,nb-1,nx,ny,nz-2,0) + 4*B(0,nb,nx,ny,nz-1,0);
+
+  id B(0,nb?,nx?,ny?,nz?,nt?{>1}) = (nt-1)/(nb + delta - 1) * B(0,nb-1,nx,ny,nz,nt-1) - (4*nt-6)/(nb+delta-1)*B(nb-1,nx,ny,nz,nt-2) + 4*B(0,nb,nx,ny,nz,nt-1);
+
+
+  id B(0,nb?{>=2}, 0, 0, 0, 0) = V(nb-2)/(2^nb * Gamma(nb)) * ( 2/(d-4) - Log(4*PI) + F(nb-2)) + G(nb-2);
+
+  id B(0,-1,0,0,0,0) = 8 + delta * (-20 * Z0 - 48 * Z1 + 8);
+
+
+* // final replacements
+   id B(0, 0, 0, 0, 0, 0) = 1;    id B(0, 1, 0, 0, 0, 0) = Z0;
+   id B(0, 1, 1, 0, 0, 0) = 1/d;  id B(0, 1, 0, 1, 0, 0) = 1/d;
+   id B(0, 1, 0, 0, 1, 0) = 1/d;  id B(0, 1, 1, 1, 0, 0) = 4*Z1;
+   id B(0, 1, 1, 0, 1, 0) = 4*Z1; id B(0, 1, 1, 0, 0, 1) = 4*Z1;
+   id B(0, 1, 0, 1, 0, 1) = 4*Z1; id B(0, 1, 0, 0, 1, 1) = 4*Z1;
+   id B(0, 1, 1, 1, 1, 0) = 8*Z2; id B(0, 1, 1, 1, 0, 1) = 8*Z2;
+   id B(0, 1, 1, 0, 1, 1) = 8*Z2; id B(0, 1, 0, 1, 1, 1) = 8*Z2;
+
+   id B(0, 1, 3, 0, 0, 0)  = -18 + 12*PI^(-2) + 48*Z0 + 108*Z1;
+   id B(0, 1, 0, 3, 0, 0)  = -18 + 12*PI^(-2) + 48*Z0 + 108*Z1;
+   id B(0, 1, 0, 0, 3, 0)  = -18 + 12*PI^(-2) + 48*Z0 + 108*Z1;
+   id B(0, 1, 0, 0, 0, 3)  = -18 + 12*PI^(-2) + 48*Z0 + 108*Z1;
+ 
+   id B(0, 1, 4, 0, 0, 0)  = 608/3 - 1216/9*PI^(-2) - 1280*Z0/3 - 3200*Z1/3;
+   id B(0, 1, 0, 4, 0, 0)  = 608/3 - 1216/9*PI^(-2) - 1280*Z0/3 - 3200*Z1/3;
+   id B(0, 1, 0, 0, 4, 0)  = 608/3 - 1216/9*PI^(-2) - 1280*Z0/3 - 3200*Z1/3;
+   id B(0, 1, 0, 0, 0, 4)  = 608/3 - 1216/9*PI^(-2) - 1280*Z0/3 - 3200*Z1/3;
+
+
+endrepeat;
+
+* //===================================
+* // REPLACE V-SYMBOLS
+
+id V(0) = 1/(4*PI^2);
+id V(1) = 1/(8*PI^2);
+id V(2) = 3/(32*PI^2);
+id V(3) = 13/(128*PI^2);
+id V(4) = 77/(512*PI^2);
+id V(5) = 297/(1024*PI^2);
+
+
+* //===================================
+* // REPLACE G-SYMBOLS
+id G(0) = 0;
+id G(1) = -7/(256*PI^2);
+id G(2) = -(11/(1536*PI^2));
+id G(3) = -(793/(589824*PI^2));
+id G(4) = -311/(1474560*PI^2);
+
+* // ==================================
+* // REPLACE F-SYMBOLS
+id F(3) = F(0) - 523/1872*PI^2 + 24257/2808 + 25/117*PI^2 * Z0 + 31/36*PI^2 * Z1;
+id F(2) = F(0) - 31/144*PI^2 + 1349/216 + 1/9*PI^2*Z0 + 31/36*PI^2*Z1;
+id F(1) = F(0) - 1/8*PI^2 + 35/12 + PI^2/2 *Z1;
+
+* // write the result to file
+.sort
+#write <bos.tmp> "%E" expr
+
+.end

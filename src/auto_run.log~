@@ -1,0 +1,25 @@
+
+...Reading diagram.in
+
+$$ OutFile       ::  wilson.quark.wfr.txt
+$$ Action        ::  Wilson
+$$ TaylorOrder   ::  1
+$$ Method        ::  mathematica
+$$ Integrate     ::  true
+$$ Error         ::  6
+$$ Trace         ::  false
+$$ rw            ::  1.0
+$$ rho           ::  1.0
+$$ Sum           ::
+$$ ExtIndices    ::
+$$ ExtMomentum   ::  p
+$$ Factor        ::  1/a^4
+$$ Diagram       ::
+
+...Diagram option is empty, using expression in math.in
+...Expanding sums for positive monomials
+...Expanding sums for negative monomials
+
+ ...Integrating 8 integrals
+ ...using 4 CPUS.
+

@@ -1,0 +1,10 @@
+vertex -- rw = 1.0
+J = (-5.068615264748136*OP-OP/EP)/(16*Pi^2)
+
+
+sails -- rw = 1.0
+(no mixing)
+
+
+operator tadpole -- rw = 1.0
+operator at bottom of loop

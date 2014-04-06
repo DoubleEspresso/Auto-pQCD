@@ -1,0 +1,54 @@
+*===This file was automatically generated in Python==*
+
+off statistics;
+
+*====includes===
+#include ../../inc/diracSimplify.h
+#include ../../inc/symmetryTables.h
+#include ../../inc/replaceBterms.h
+#include ../../inc/projectOps.h
+#include ../../inc/irIsolate.h
+#include ../../inc/expandSums.h
+#include ../../inc/expandSumsOverlap.h
+#include ../../inc/formIntegrate.h
+#include ../../inc/diracTrace.h
+
+*==lorentz indices===
+autodeclare index ix =0;
+autodeclare index ex =0;
+
+*==polarization indices===
+autodeclare index sx = 0;
+
+*==vectors==
+CF p,p1,p2,p3,p4;  * // Fermion momenta
+CF k;              * // Loop momenta 
+CF q,q1,q2,q3,q4;  * // gauge field momenta 
+CF d;              * // light-like vector 
+
+* == Special functions == 
+CF sum,SUM;         * // index summation helpers 
+CF s,S,m,M,b,B,c,C; * // trig functions of loop-momenta
+
+
+* == Gamma matrices == 
+F G;
+CF g;
+CF c;
+
+* == Symbols ==
+S g0, rh, rw, m0, a;  * // physical constants
+S pow, pow2, sf, DIM; * // powers/scale factors
+S db, dq, aa, bb;     * // bosonic/fermionic denominators
+S n,nx,ny,nz,nt;      * // powers of k - used for integrating
+S OP;                 * // momentum space operator
+
+* == The expression==
+L expr = (((-i_)*bb*G(ix1)*m(ix1)-i_*aa*bb*rh*G(ix1)*m(ix1)-bb*rw*s(ix1)+aa*bb*rh*rw*s(ix1)-aa*bb*b(ix4)*G(ix4)*G(ix1)*m(ix1)*sum(ix4)-i_*aa*bb*rw*b(ix4)*G(ix4)*s(ix1)*sum(ix4)+(2*i_)*aa*bb*rw*G(ix1)*m(ix1)*s(ix4)^2*sum(ix4)-2*aa*bb*rw^2*s(ix1)*s(ix4)^2*sum(ix4)-(a*bb*rw*d(ix1,ix5)*m(ix1)*p(ix5)*sum(ix5))/2+(a*aa*bb*rh*rw*d(ix1,ix5)*m(ix1)*p(ix5)*sum(ix5))/2+(i_/2)*a*bb*d(ix1,ix5)*G(ix1)*p(ix5)*s(ix1)*sum(ix5)+(i_/2)*a*aa*bb*rh*d(ix1,ix5)*G(ix1)*p(ix5)*s(ix1)*sum(ix5)-a*aa*bb*d(ix2,ix5)*G(ix1)*G(ix2)*m(ix1)*p(ix5)*sum(ix2)*sum(ix5)-i_*a*aa*bb*rw*d(ix2,ix5)*G(ix2)*p(ix5)*s(ix1)*sum(ix2)*sum(ix5)-(i_/2)*a*aa*bb*rw*b(ix4)*d(ix1,ix5)*G(ix4)*m(ix1)*p(ix5)*sum(ix4)*sum(ix5)+(a*aa*bb*b(ix4)*d(ix1,ix5)*G(ix4)*G(ix1)*p(ix5)*s(ix1)*sum(ix4)*sum(ix5))/2-a*aa*bb*rw^2*d(ix1,ix5)*m(ix1)*p(ix5)*s(ix4)^2*sum(ix4)*sum(ix5)-i_*a*aa*bb*rw*d(ix1,ix5)*G(ix1)*p(ix5)*s(ix1)*s(ix4)^2*sum(ix4)*sum(ix5)+(i_*a*aa*bb*b(ix4)*d(ix2,ix5)*G(ix4)*G(ix1)*G(ix2)*m(ix1)*p(ix5)*sum(ix2)*sum(ix4)*sum(ix5))/rh-(a*aa*bb*rw*b(ix4)*d(ix2,ix5)*G(ix4)*G(ix2)*p(ix5)*s(ix1)*sum(ix2)*sum(ix4)*sum(ix5))/rh+(2*a*aa*bb*rw*d(ix2,ix5)*G(ix1)*G(ix2)*m(ix1)*p(ix5)*s(ix4)^2*sum(ix2)*sum(ix4)*sum(ix5))/rh+((2*i_)*a*aa*bb*rw^2*d(ix2,ix5)*G(ix2)*p(ix5)*s(ix1)*s(ix4)^2*sum(ix2)*sum(ix4)*sum(ix5))/rh)*(a/(2*rh)-(i_*a*b(ix6)*G(ix6)*sum(ix6))/dq)*((-i_)*bb*G(ix1)*m(ix1)-i_*aa*bb*rh*G(ix1)*m(ix1)-bb*rw*s(ix1)+aa*bb*rh*rw*s(ix1)-(a*bb*rw*d(ix1,ix11)*m(ix1)*p(ix11)*sum(ix11))/2+(a*aa*bb*rh*rw*d(ix1,ix11)*m(ix1)*p(ix11)*sum(ix11))/2+(i_/2)*a*bb*d(ix1,ix11)*G(ix1)*p(ix11)*s(ix1)*sum(ix11)+(i_/2)*a*aa*bb*rh*d(ix1,ix11)*G(ix1)*p(ix11)*s(ix1)*sum(ix11)-a*aa*bb*d(ix10,ix11)*G(ix10)*G(ix1)*m(ix1)*p(ix11)*sum(ix10)*sum(ix11)-i_*a*aa*bb*rw*d(ix10,ix11)*G(ix10)*p(ix11)*s(ix1)*sum(ix10)*sum(ix11)-aa*bb*b(ix8)*G(ix1)*G(ix8)*m(ix1)*sum(ix8)-i_*aa*bb*rw*b(ix8)*G(ix8)*s(ix1)*sum(ix8)+(2*i_)*aa*bb*rw*G(ix1)*m(ix1)*s(ix8)^2*sum(ix8)-2*aa*bb*rw^2*s(ix1)*s(ix8)^2*sum(ix8)-(i_/2)*a*aa*bb*rw*b(ix8)*d(ix1,ix11)*G(ix8)*m(ix1)*p(ix11)*sum(ix11)*sum(ix8)+(a*aa*bb*b(ix8)*d(ix1,ix11)*G(ix1)*G(ix8)*p(ix11)*s(ix1)*sum(ix11)*sum(ix8))/2-a*aa*bb*rw^2*d(ix1,ix11)*m(ix1)*p(ix11)*s(ix8)^2*sum(ix11)*sum(ix8)-i_*a*aa*bb*rw*d(ix1,ix11)*G(ix1)*p(ix11)*s(ix1)*s(ix8)^2*sum(ix11)*sum(ix8)+(i_*a*aa*bb*b(ix8)*d(ix10,ix11)*G(ix10)*G(ix1)*G(ix8)*m(ix1)*p(ix11)*sum(ix10)*sum(ix11)*sum(ix8))/rh-(a*aa*bb*rw*b(ix8)*d(ix10,ix11)*G(ix10)*G(ix8)*p(ix11)*s(ix1)*sum(ix10)*sum(ix11)*sum(ix8))/rh+(2*a*aa*bb*rw*d(ix10,ix11)*G(ix10)*G(ix1)*m(ix1)*p(ix11)*s(ix8)^2*sum(ix10)*sum(ix11)*sum(ix8))/rh+((2*i_)*a*aa*bb*rw^2*d(ix10,ix11)*G(ix10)*p(ix11)*s(ix1)*s(ix8)^2*sum(ix10)*sum(ix11)*sum(ix8))/rh)*((a^2*d(ix1,ix1))/db+(2*a^3*b(ix12)*p(ix12)*sum(ix12))/db^2)*sum(ix1))/a^4;
+id a^pow?!{-20,0}=0;
+
+contract;
+print expr;
+***********
+*ANSWER
+.end

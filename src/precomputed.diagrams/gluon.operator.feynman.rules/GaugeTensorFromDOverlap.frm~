@@ -1,0 +1,93 @@
+off statistics;
+format mathematica;
+
+
+* //--------------------------------
+* // define the color indices
+Autodeclare Index a,b,c,d;
+
+* //----------------------------------
+* // the indices on all T-Functions
+Autodeclare Index i,j,k;
+
+* //---------------------------------
+* // the lorentz indices
+Autodeclare Index ix;
+
+* //---------------------------------
+* // any dummy indices used
+Autodeclare Index dum;
+
+* //---------------------------------
+* // the momenta for all feynman rules
+Autodeclare Vector k,p,q;
+
+* //--------------------------------
+* // useful shorthand for the vertices
+CF A,B,sf,BD,del;
+CF Subscript,T,Sin,Cos,SUM;
+
+* //--------------------------------
+* // non-commuting dirac matrices
+F G, SIG;
+
+
+* //-------------------------------------
+* //===== FIRST ORDER FEYNMAN RULE == *
+* // this result is derived by hand, and 
+* // expanded here.
+
+L FirstOrderFeynmanRule = -rh/a*4*i_*
+  			FZERO * T(0,1,0,p1,p2,mu);
+
+
+
+
+*===================================================
+*  TRACE REPLACEMENTS
+*===================================================
+
+* set for the 1st order Feynman Rule.
+* we assume that p is the external momenta for G_{mu,nu}
+* and that k is the dummy integration momenta (to be factored out).
+*-----------------------------------------------------------------------------------------------------------------------
+
+id T(0,1,0,p1?,p2?,mu?) = 1/(4*i_)*SIG(1,alpha,beta)
+                                         *( A(0,k+p,dum11)   * g_(1,dum1)  + B(0,k+p,dum11) )
+                                         *( AD(1,k+p/2,mu1)  * g_(1,mu)    + BD(1,k+p/2,mu1) )
+	                                 *( A(0,k,dum22)     * g_(1,dum2)  + B(0,k,dum22) );
+
+
+* =============================
+* cos(k)   --> t1
+* sin(k)   --> t2
+* cos(k/2) --> t3
+* sin(k/2) --> t4
+*==============================
+
+* == REPLACE ALL A/B FACTORS ==
+id A(0,k,mu?)      =  i_/a  * SUM(mu) * t2(mu);
+id B(0,k,mu?)      = 2*rw/a * SUM(mu) * t4(mu)^2 - rh/a
+
+id A(0,k+p,mu?)    =   i_/a * SUM(mu) * ( Sin(a*p(mu))   * t1(mu) + Cos(a * p(mu) ) * t2(mu));
+id B(0,k+p,mu?)    = 2*rw/a * SUM(mu) * ( Sin(a*p(mu)/2) * t1(mu) + Cos(a*p(mu)/2)  * t2(mu))^2 - rh/a;
+
+id AD(0,k+p/2,mu?) =  -i_/a * SUM(mu) * ( Sin(a*p(mu)/2) * t1(mu) + Cos(a*p(mu)/2) * t2(mu));
+id BD(0,k+p/2,mu?) = 2*rw/a * SUM(mu) * ( Sin(a*p(mu)/2) * t1(mu) + Cos(a*p(mu)/2) * t2(mu))^2 - rh/a;
+
+id A(1,p1?,p2?,mu?)  = i_  * Cos(a * p1(mu)/2 + a * p2(mu)/2);
+id A(1,k+p/2,mu?)    = i_  * ( Cos(a*p(mu)/2)*t1(mu) - Sin(a*p(mu)/2)*t2(mu)  );
+id B(1,p1?,p2?,mu?)  = rw  * Sin(a * p1(mu)/2 + a * p2(mu)/2);
+id AD(1,p1?,p2?,mu?) = -i_ * Cos(a * p1(mu)/2 + a * p2(mu)/2);
+id BD(1,p1?,p2?,mu?) = rw  * Sin(a * p1(mu)/2 + a * p2(mu)/2);
+
+id A(2,p1?,p2?,mu?)   = -i_*a/2 * Sin(a * p1(mu)/2 + a * p2(mu)/2);
+id B(2,p1?,p2?,mu?)   = a*rw/2  * Cos(a * p1(mu)/2 + a * p2(mu)/2);
+id AD(2,p1?,p2?,mu?)  =  i_*a/2 * Sin(a * p1(mu)/2 + a * p2(mu)/2);
+id BD(2,p1?,p2?,mu?)  = a*rw/2  * Cos(a * p1(mu)/2 + a * p2(mu)/2);
+
+id A(3,p1?,p2?,mu?)   = -a^2/6  * Cos(a * p1(mu)/2 + a * p2(mu)/2);
+id B(3,p1?,p2?,mu?)   = -a^2/6  * rw  * Sin(a * p1(mu)/2 + a * p2(mu)/2);
+id AD(3,p1?,p2?,mu?)  = -a^2/6  * Cos(a * p1(mu)/2 + a * p2(mu)/2);
+id BD(3,p1?,p2?,mu?)  = -a^2/6	* rw  * Sin(a * p1(mu)/2 + a * p2(mu)/2);
+

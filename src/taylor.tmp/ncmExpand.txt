@@ -1,0 +1,1 @@
+(-I)*Cos[(a*(Subscript[k, mu] + Subscript[p, mu]))/2]*G[mu] - rw*Sin[(a*(Subscript[k, mu] + Subscript[p, mu]))/2]

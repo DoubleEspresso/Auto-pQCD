@@ -1,0 +1,167 @@
+// integrands for lattice perturbation theory
+// wilson fermions and gauge action assumed
+// 
+// M. Glatzmaier
+// Oct. 2013
+//
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+#include "cubature.h"
+
+
+//-----------------------------------------
+#define VERBOSE 0
+
+#if defined(PCUBATURE)
+#  define cubature pcubature
+#else
+#  define cubature hcubature
+#endif
+
+//-----------------------------------------
+#define K_PI 3.14159265358979323846
+unsigned integrand_fdim = 0;
+
+
+// global variables used as parameters
+double  pow_dq, pow_dg;
+double pow_kx,pow_ky,pow_kz,pow_kt;
+int f_or_j; // 0 for f-integral 1 for j-integral
+
+double rw;
+//-----------------------------------------
+
+
+// all integrals have dim-->4
+double wilson_integrand(unsigned dim, const double *x)
+{
+
+  double integrand;
+  double eps = 0.0000000001; // a small parameter to help with convergence
+
+  // apply a simple shift from [0,1]-->[-pi,pi]
+  // associated jacobian ~(2*PI)^4
+  double x1 = (x[0]*(2.*K_PI) - K_PI);
+  double x2 = (x[1]*(2.*K_PI) - K_PI);
+  double x3 = (x[2]*(2.*K_PI) - K_PI);
+  double x4 = (x[3]*(2.*K_PI) - K_PI);
+
+
+  double kh1 = 4.0*pow(sin(x1/2.0),2.0);
+  double kh2 = 4.0*pow(sin(x2/2.0),2.0);
+  double kh3 = 4.0*pow(sin(x3/2.0),2.0);
+  double kh4 = 4.0*pow(sin(x4/2.0),2.0);
+
+  double sumk     = pow(sin(x1),2.0) + pow(sin(x2),2.0) + pow(sin(x3),2.0) + pow(sin(x4),2.0) ;
+  double sumkhalf = 0.25 * (kh1 + kh2 + kh3 + kh4);
+
+  double dg = 4.0 * sumkhalf + eps;
+  double dq = sumk + pow((2.0 * rw * sumkhalf),2.0) + eps; // eps helps with convergence as k->0.
+
+
+  // the f-integrand::
+
+  if (!f_or_j) {
+    double num = pow(kh1,pow_kx)*pow(kh2,pow_ky)*pow(kh3+eps,pow_kz)*pow(kh4,pow_kt);
+    double den = pow(dg,pow_dg) * pow(dq,pow_dq);
+
+    // the integrand
+    integrand =   num / den;
+
+  }
+  else
+    {
+      double num = pow(kh1,pow_kx)*pow(kh2,pow_ky)*pow(kh3,pow_kz)*pow(kh4,pow_kt);
+      double den1= pow(dg,pow_dg+pow_dq);
+      double den2= pow(dg,pow_dg) * pow(dq,pow_dq);
+
+      integrand = num/den2 - num/den1;
+    }
+
+  return integrand;
+
+}
+
+
+// a tiny wrapper to the integrand
+int wilson_setup(unsigned dim, const double *x, void *data_, unsigned fdim, double *retval)
+{
+  (void) data_; //not used (needed based on cubature code).
+  int j;
+  double val;
+
+  for (j=0; j<fdim; ++j)
+    {
+      val = wilson_integrand(dim, x);
+      retval[j] = val;
+    }
+  return 0;
+}
+
+
+
+//--------------------------------------------------------
+// main codes
+#include <ctype.h>
+int main(int argc, char **argv)
+{
+  double *xmin, *xmax;
+  double tol, *val, *err;
+  unsigned i, dim, maxEval;
+
+
+  if (argc < 10)  {fprintf(stderr, "Need 10 inputs.\n");exit(EXIT_FAILURE);}
+
+  dim = argc > 1 ? atoi(argv[1]) : 4;
+  tol = argc > 2 ? atof(argv[2]) : 1e-4;
+  maxEval = 0; //the default value for maxEval.
+  
+  // read in the integration parameters
+  // we start with powers of dq,dg
+  pow_dq = argc > 3 ? atof(argv[3]) : 0;
+  pow_dg = argc > 4 ? atof(argv[4]) : 0;
+
+  // the powers on the kh-factors
+  pow_kx = argc > 5 ? atof(argv[5]) : 0;
+  pow_ky = argc > 6 ? atof(argv[6]) : 0;
+  pow_kz = argc > 7 ? atof(argv[7]) : 0;
+  pow_kt = argc > 8 ? atof(argv[8]) : 0;
+
+  // the value of rw
+  rw = argc > 9 ? atof(argv[9]) : 1.0;
+  
+  // which type of integral is this?
+  f_or_j = argc > 10 ? atoi(argv[10]) : 0.0;
+
+  
+  integrand_fdim = 1; // the default value (possibly don't need)
+  
+  // initialize all variables
+  val = (double *) malloc(sizeof(double) * integrand_fdim);
+  err = (double *) malloc(sizeof(double) * integrand_fdim);
+  
+  xmin = (double *) malloc(dim * sizeof(double));
+  xmax = (double *) malloc(dim * sizeof(double));
+
+  // the dimensions
+  for (i = 0; i < dim; ++i) {
+    xmin[i] = 0;
+    xmax[i] = 1;
+  }
+
+
+
+  cubature(integrand_fdim, wilson_setup, NULL, dim, xmin, xmax, maxEval,  0, tol, ERROR_INDIVIDUAL, val, err);
+
+  printf("%0.11g",val[0]);
+
+  free(xmax);
+  free(xmin);
+  free(err);
+  free(val);
+
+  return EXIT_SUCCESS;
+  
+}

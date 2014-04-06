@@ -1,0 +1,371 @@
+
+
+
+ lattice integrand, iter :: 0, rw = 0.1 ,rho = 1.5
+J = (4.824077210922654*OP+(3.555556166666667*OP)/EP)/(16*Pi^2)
+
+
+ lattice integrand, iter :: 1, rw = 0.2 ,rho = 1.5
+J = (4.97771641093838*OP+(3.555556166666667*OP)/EP)/(16*Pi^2)
+
+
+ lattice integrand, iter :: 2, rw = 0.3 ,rho = 1.5
+J = (5.112000920563689*OP+(3.555556166666667*OP)/EP)/(16*Pi^2)
+
+
+ lattice integrand, iter :: 3, rw = 0.4 ,rho = 1.5
+J = (5.245643281291193*OP+(3.555556166666667*OP)/EP)/(16*Pi^2)
+
+
+ lattice integrand, iter :: 4, rw = 0.5 ,rho = 1.5
+J = (5.386768345041509*OP+(3.555556166666667*OP)/EP)/(16*Pi^2)
+
+
+ lattice integrand, iter :: 5, rw = 0.6 ,rho = 1.5
+J = (5.555180459734309*OP+(3.555556166666667*OP)/EP)/(16*Pi^2)
+
+
+ lattice integrand, iter :: 6, rw = 0.7 ,rho = 1.5
+J = (5.755037814368107*OP+(3.555556166666667*OP)/EP)/(16*Pi^2)
+
+
+ lattice integrand, iter :: 7, rw = 0.8 ,rho = 1.5
+J = (5.950136789271191*OP+(3.555556166666667*OP)/EP)/(16*Pi^2)
+
+
+ lattice integrand, iter :: 8, rw = 0.9 ,rho = 1.5
+J = (6.129406133722912*OP+(3.555556166666667*OP)/EP)/(16*Pi^2)
+
+
+ lattice integrand, iter :: 9, rw = 1.0 ,rho = 1.5
+J = (6.31477701987722*OP+(3.555556166666667*OP)/EP)/(16*Pi^2)
+
+
+ lattice integrand, iter :: 0, rw = 0.1 ,rho = 1.5
+J = (-20.850917175688483*OP-(4.*OP)/EP)/(16*Pi^2)
+
+
+ lattice integrand, iter :: 1, rw = 0.2 ,rho = 1.5
+J = (-20.570170464051625*OP-(4.*OP)/EP)/(16*Pi^2)
+
+
+ lattice integrand, iter :: 2, rw = 0.3 ,rho = 1.5
+J = (-20.256516856339385*OP-(4.*OP)/EP)/(16*Pi^2)
+
+
+ lattice integrand, iter :: 3, rw = 0.4 ,rho = 1.5
+J = (-19.90876946169397*OP-(4.*OP)/EP)/(16*Pi^2)
+
+
+ lattice integrand, iter :: 4, rw = 0.5 ,rho = 1.5
+J = (-19.534299651925394*OP-(4.*OP)/EP)/(16*Pi^2)
+
+
+ lattice integrand, iter :: 5, rw = 0.6 ,rho = 1.5
+J = (-19.142279842922125*OP-(4.*OP)/EP)/(16*Pi^2)
+
+
+ lattice integrand, iter :: 6, rw = 0.7 ,rho = 1.5
+J = (-18.74063282215479*OP-(4.*OP)/EP)/(16*Pi^2)
+
+
+ lattice integrand, iter :: 7, rw = 0.8 ,rho = 1.5
+J = (-18.334900942033887*OP-(4.*OP)/EP)/(16*Pi^2)
+
+
+ lattice integrand, iter :: 8, rw = 0.9 ,rho = 1.5
+J = (-17.92814450122115*OP-(4.*OP)/EP)/(16*Pi^2)
+
+
+ lattice integrand, iter :: 9, rw = 1.0 ,rho = 1.5
+J = (-17.521704017611224*OP-(4.*OP)/EP)/(16*Pi^2)
+
+
+ lattice integrand, iter :: 0, rw = 0.1 ,rho = 1.5
+J = (-101.02084488208767*OP-(16.*OP)/EP)/(16*Pi^2)
+
+
+ lattice integrand, iter :: 1, rw = 0.2 ,rho = 1.5
+J = (-100.25567424568388*OP-(16.*OP)/EP)/(16*Pi^2)
+
+
+ lattice integrand, iter :: 2, rw = 0.3 ,rho = 1.5
+J = (-99.4688127317466*OP-(16.*OP)/EP)/(16*Pi^2)
+
+
+ lattice integrand, iter :: 3, rw = 0.4 ,rho = 1.5
+J = (-98.66815160862723*OP-(16.*OP)/EP)/(16*Pi^2)
+
+
+ lattice integrand, iter :: 4, rw = 0.5 ,rho = 1.5
+J = (-97.86005133212059*OP-(16.*OP)/EP)/(16*Pi^2)
+
+
+ lattice integrand, iter :: 5, rw = 0.6 ,rho = 1.5
+J = (-97.04827175790503*OP-(16.*OP)/EP)/(16*Pi^2)
+
+
+ lattice integrand, iter :: 6, rw = 0.7 ,rho = 1.5
+J = (-96.23464214609186*OP-(16.*OP)/EP)/(16*Pi^2)
+
+
+ lattice integrand, iter :: 7, rw = 0.8 ,rho = 1.5
+J = (-95.42010118500843*OP-(16.*OP)/EP)/(16*Pi^2)
+
+
+ lattice integrand, iter :: 8, rw = 0.9 ,rho = 1.5
+J = (-94.60535269688826*OP-(16.*OP)/EP)/(16*Pi^2)
+
+
+ lattice integrand, iter :: 9, rw = 1.0 ,rho = 1.5
+J = (-93.79030729756485*OP-(16.*OP)/EP)/(16*Pi^2)
+
+
+ lattice integrand, iter :: 0, rw = 0.1 ,rho = 1.5
+J = (-8.514618024955269*OP-(1.7777772*OP)/EP)/(16*Pi^2)
+
+
+ lattice integrand, iter :: 1, rw = 0.2 ,rho = 1.5
+J = (-8.408666035795024*OP-(1.7777772*OP)/EP)/(16*Pi^2)
+
+
+ lattice integrand, iter :: 0, rw = 0.1 ,rho = 1.5
+J = (-1.9262515816316546*OP-(1.7777772*OP)/EP)/(16*Pi^2)
+
+
+ lattice integrand, iter :: 1, rw = 0.2 ,rho = 1.5
+J = (-8.408666035795024*OP-(1.7777772*OP)/EP)/(16*Pi^2)
+
+
+ lattice integrand, iter :: 2, rw = 0.3 ,rho = 1.5
+J = (-8.293025640415687*OP-(1.7777772*OP)/EP)/(16*Pi^2)
+
+
+ lattice integrand, iter :: 3, rw = 0.4 ,rho = 1.5
+J = (-8.151193448778022*OP-(1.7777772*OP)/EP)/(16*Pi^2)
+
+
+ lattice integrand, iter :: 4, rw = 0.5 ,rho = 1.5
+J = (-7.97488229877982*OP-(1.7777772*OP)/EP)/(16*Pi^2)
+
+
+ lattice integrand, iter :: 5, rw = 0.6 ,rho = 1.5
+J = (-7.767566051410612*OP-(1.7777772*OP)/EP)/(16*Pi^2)
+
+
+ lattice integrand, iter :: 6, rw = 0.7 ,rho = 1.5
+J = (-7.53569048369181*OP-(1.7777772*OP)/EP)/(16*Pi^2)
+
+
+ lattice integrand, iter :: 7, rw = 0.8 ,rho = 1.5
+J = (-7.285874993447167*OP-(1.7777772*OP)/EP)/(16*Pi^2)
+
+
+ lattice integrand, iter :: 8, rw = 0.9 ,rho = 1.5
+J = (-7.025035548611742*OP-(1.7777772*OP)/EP)/(16*Pi^2)
+
+
+ lattice integrand, iter :: 9, rw = 1.0 ,rho = 1.5
+J = (-6.75877667665574*OP-(1.7777772*OP)/EP)/(16*Pi^2)
+
+
+ lattice integrand, iter :: 0, rw = 0.1 ,rho = 0.5 twist_2_g->q diagram
+J = ((0.-18.17547412025029*I)*OP-((0.+4.*I)*OP)/EP)/(16*Pi^2)
+
+
+ lattice integrand, iter :: 1, rw = 0.2 ,rho = 0.5 twist_2_g->q diagram
+J = ((0.-17.572277659555382*I)*OP-((0.+4.*I)*OP)/EP)/(16*Pi^2)
+
+
+ lattice integrand, iter :: 2, rw = 0.3 ,rho = 0.5 twist_2_g->q diagram
+J = ((0.-17.02774940361397*I)*OP-((0.+4.*I)*OP)/EP)/(16*Pi^2)
+
+
+ lattice integrand, iter :: 3, rw = 0.4 ,rho = 0.5 twist_2_g->q diagram
+J = ((0.-16.578209809240093*I)*OP-((0.+4.*I)*OP)/EP)/(16*Pi^2)
+
+
+ lattice integrand, iter :: 4, rw = 0.5 ,rho = 0.5 twist_2_g->q diagram
+J = ((0.-16.1874052214286*I)*OP-((0.+4.*I)*OP)/EP)/(16*Pi^2)
+
+
+ lattice integrand, iter :: 5, rw = 0.6 ,rho = 0.5 twist_2_g->q diagram
+J = ((0.-15.813489846740586*I)*OP-((0.+4.*I)*OP)/EP)/(16*Pi^2)
+
+
+ lattice integrand, iter :: 6, rw = 0.7 ,rho = 0.5 twist_2_g->q diagram
+J = ((0.-15.436647223581922*I)*OP-((0.+4.*I)*OP)/EP)/(16*Pi^2)
+
+
+ lattice integrand, iter :: 7, rw = 0.8 ,rho = 0.5 twist_2_g->q diagram
+J = ((0.-15.060092586388233*I)*OP-((0.+4.*I)*OP)/EP)/(16*Pi^2)
+
+
+ lattice integrand, iter :: 8, rw = 0.9 ,rho = 0.5 twist_2_g->q diagram
+J = ((0.-14.691223394091566*I)*OP-((0.+4.*I)*OP)/EP)/(16*Pi^2)
+
+
+ lattice integrand, iter :: 9, rw = 1.0 ,rho = 0.5 twist_2_g->q diagram
+J = ((0.-14.334475613704878*I)*OP-((0.+4.*I)*OP)/EP)/(16*Pi^2)
+
+
+ lattice integrand, iter :: 0, rw = 0.1 ,rho = 1.5 twist_2_g->q diagram
+J = ((0.-75.96568889244683*I)*OP-((0.+9.*I)*OP)/EP)/(16*Pi^2)
+
+
+ lattice integrand, iter :: 1, rw = 0.2 ,rho = 1.5 twist_2_g->q diagram
+J = ((0.-75.54059984488894*I)*OP-((0.+9.*I)*OP)/EP)/(16*Pi^2)
+
+
+ lattice integrand, iter :: 2, rw = 0.3 ,rho = 1.5 twist_2_g->q diagram
+J = ((0.-75.08253704539284*I)*OP-((0.+9.*I)*OP)/EP)/(16*Pi^2)
+
+
+ lattice integrand, iter :: 3, rw = 0.4 ,rho = 1.5 twist_2_g->q diagram
+J = ((0.-74.69283613882011*I)*OP-((0.+9.*I)*OP)/EP)/(16*Pi^2)
+
+
+ lattice integrand, iter :: 4, rw = 0.5 ,rho = 1.5 twist_2_g->q diagram
+J = ((0.-74.38096072978688*I)*OP-((0.+9.*I)*OP)/EP)/(16*Pi^2)
+
+
+ lattice integrand, iter :: 5, rw = 0.6 ,rho = 1.5 twist_2_g->q diagram
+J = ((0.-74.12717818902347*I)*OP-((0.+9.*I)*OP)/EP)/(16*Pi^2)
+
+
+ lattice integrand, iter :: 6, rw = 0.7 ,rho = 1.5 twist_2_g->q diagram
+J = ((0.-73.9116839052913*I)*OP-((0.+9.*I)*OP)/EP)/(16*Pi^2)
+
+
+ lattice integrand, iter :: 7, rw = 0.8 ,rho = 1.5 twist_2_g->q diagram
+J = ((0.-73.71569651581488*I)*OP-((0.+9.*I)*OP)/EP)/(16*Pi^2)
+
+
+ lattice integrand, iter :: 8, rw = 0.9 ,rho = 1.5 twist_2_g->q diagram
+J = ((0.-73.52566946062552*I)*OP-((0.+9.*I)*OP)/EP)/(16*Pi^2)
+
+
+ lattice integrand, iter :: 9, rw = 1.0 ,rho = 1.5 twist_2_g->q diagram
+J = ((0.-73.33944078401353*I)*OP-((0.+9.*I)*OP)/EP)/(16*Pi^2)
+
+
+ lattice integrand, iter :: 0, rw = 0.1 ,rho = 0.5 twist_2_g->q diagram
+J = ((0.+50.31484401475558*I)*OP-((0.+1.*I)*OP)/EP)/(16*Pi^2)
+
+
+ lattice integrand, iter :: 1, rw = 0.2 ,rho = 0.5 twist_2_g->q diagram
+J = ((0.+51.181940459752404*I)*OP-((0.+1.*I)*OP)/EP)/(16*Pi^2)
+
+
+ lattice integrand, iter :: 2, rw = 0.3 ,rho = 0.5 twist_2_g->q diagram
+J = ((0.+51.972963339261035*I)*OP-((0.+1.*I)*OP)/EP)/(16*Pi^2)
+
+
+ lattice integrand, iter :: 3, rw = 0.4 ,rho = 0.5 twist_2_g->q diagram
+J = ((0.+52.76366378636647*I)*OP-((0.+1.*I)*OP)/EP)/(16*Pi^2)
+
+
+ lattice integrand, iter :: 4, rw = 0.5 ,rho = 0.5 twist_2_g->q diagram
+J = ((0.+53.57218851947595*I)*OP-((0.+1.*I)*OP)/EP)/(16*Pi^2)
+
+
+ lattice integrand, iter :: 5, rw = 0.6 ,rho = 0.5 twist_2_g->q diagram
+J = ((0.+54.38826135533342*I)*OP-((0.+1.*I)*OP)/EP)/(16*Pi^2)
+
+
+ lattice integrand, iter :: 6, rw = 0.7 ,rho = 0.5 twist_2_g->q diagram
+J = ((0.+55.20279915839801*I)*OP-((0.+1.*I)*OP)/EP)/(16*Pi^2)
+
+
+ lattice integrand, iter :: 7, rw = 0.8 ,rho = 0.5 twist_2_g->q diagram
+J = ((0.+56.010963356041394*I)*OP-((0.+1.*I)*OP)/EP)/(16*Pi^2)
+
+
+ lattice integrand, iter :: 8, rw = 0.9 ,rho = 0.5 twist_2_g->q diagram
+J = ((0.+56.810355146270524*I)*OP-((0.+1.*I)*OP)/EP)/(16*Pi^2)
+
+
+ lattice integrand, iter :: 9, rw = 1.0 ,rho = 0.5 twist_2_g->q diagram
+J = ((0.+57.59973607143137*I)*OP-((0.+1.*I)*OP)/EP)/(16*Pi^2)
+
+
+ lattice integrand, iter :: 0, rw = 0.1 ,rho = -- twist_2_q->g diagram
+J = 0.0006296725584192997*OP
+
+
+ lattice integrand, iter :: 1, rw = 0.2 ,rho = -- twist_2_q->g diagram
+J = -0.000047419678720887125*OP
+
+
+ lattice integrand, iter :: 2, rw = 0.3 ,rho = -- twist_2_q->g diagram
+J = -0.0004012912573279992*OP
+
+
+ lattice integrand, iter :: 3, rw = 0.4 ,rho = -- twist_2_q->g diagram
+J = -0.0005708941267666777*OP
+
+
+ lattice integrand, iter :: 4, rw = 0.5 ,rho = -- twist_2_q->g diagram
+J = -0.0006566379008417866*OP
+
+
+ lattice integrand, iter :: 5, rw = 0.6 ,rho = -- twist_2_q->g diagram
+J = -0.0007080610201097515*OP
+
+
+ lattice integrand, iter :: 6, rw = 0.7 ,rho = -- twist_2_q->g diagram
+J = -0.0007451468596997421*OP
+
+
+ lattice integrand, iter :: 7, rw = 0.8 ,rho = -- twist_2_q->g diagram
+J = -0.0007753505598288076*OP
+
+
+ lattice integrand, iter :: 8, rw = 0.9 ,rho = -- twist_2_q->g diagram
+J = -0.0008014276139278834*OP
+
+
+ lattice integrand, iter :: 9, rw = 1.0 ,rho = -- twist_2_q->g diagram
+J = -0.000824461848217271*OP
+
+
+ lattice integrand, iter :: 0, rw = 0.1 ,rho = -- twist_2_q->g sails diagram
+J = (-3.581070496105407*OP-(2*OP)/(3*EP))/(16*Pi^2)
+
+
+ lattice integrand, iter :: 1, rw = 0.2 ,rho = -- twist_2_q->g sails diagram
+J = (-2.4600875832588245*OP-(2*OP)/(3*EP))/(16*Pi^2)
+
+
+ lattice integrand, iter :: 2, rw = 0.3 ,rho = -- twist_2_q->g sails diagram
+J = (-1.9397542198283653*OP-(2*OP)/(3*EP))/(16*Pi^2)
+
+
+ lattice integrand, iter :: 3, rw = 0.4 ,rho = -- twist_2_q->g sails diagram
+J = (-1.727604748180558*OP-(2*OP)/(3*EP))/(16*Pi^2)
+
+
+ lattice integrand, iter :: 4, rw = 0.5 ,rho = -- twist_2_q->g sails diagram
+J = (-1.6708014245704834*OP-(2*OP)/(3*EP))/(16*Pi^2)
+
+
+ lattice integrand, iter :: 5, rw = 0.6 ,rho = -- twist_2_q->g sails diagram
+J = (-1.690799174594957*OP-(2*OP)/(3*EP))/(16*Pi^2)
+
+
+ lattice integrand, iter :: 6, rw = 0.7 ,rho = -- twist_2_q->g sails diagram
+J = (-1.7482943455099818*OP-(2*OP)/(3*EP))/(16*Pi^2)
+
+
+ lattice integrand, iter :: 7, rw = 0.8 ,rho = -- twist_2_q->g sails diagram
+J = (-1.823500345494009*OP-(2*OP)/(3*EP))/(16*Pi^2)
+
+
+ lattice integrand, iter :: 8, rw = 0.9 ,rho = -- twist_2_q->g sails diagram
+J = (-1.9062795753857649*OP-(2*OP)/(3*EP))/(16*Pi^2)
+
+
+ lattice integrand, iter :: 9, rw = 1.0 ,rho = -- twist_2_q->g sails diagram
+J = (-1.9913526828894093*OP-(2*OP)/(3*EP))/(16*Pi^2)
+
+
